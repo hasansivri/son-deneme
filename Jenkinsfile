@@ -19,20 +19,7 @@ pipeline {
                 sh 'docker push "$ECR_REGISTRY/$APP_REPO_NAME:latest"'
             }
         }
-        stage('Create Infrastructure') {
-            steps {
-                echo 'Creating infrastructure using Terraform'
-                dir('infrastructure') {
-                    sh """
-                        sed -i 's/secondkey/${ANS_KEYPAIR}/g' main.tf
-                        terraform init
-                        terraform apply -auto-approve -no-color
-                        terraform destroy -auto-approve -no-color
-                                                                      
-                    """
-                }
-            }
-        }
+
         stage('Deploy to Kubernetes') {
             steps {
                 script {
