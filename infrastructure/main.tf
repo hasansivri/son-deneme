@@ -17,7 +17,7 @@ data "aws_region" "current" {}
 
 locals {
   # change here, optional
-  name = "clarusway"
+  name = "webapp"
   keyname = "secondkey"
   instancetype = "t2.micro"
   ami = "ami-0c7217cdde317cfec"
@@ -50,7 +50,7 @@ resource "aws_instance" "worker" {
 
 resource "aws_iam_instance_profile" "ec2connectprofile" {
   name = "ec2connectprofile-${local.name}"
-  role = aws_iam_role.ec2connectcli.name
+  role = aws_iam_role.webapp.name
 }
 
 resource "aws_iam_role" "ec2connectcli" {
