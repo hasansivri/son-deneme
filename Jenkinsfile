@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     echo 'Deploying to Kubernetes'
-                    withKubeConfig([credentialsId: 'kube-config', serverUrl: "https://$KUBE_MASTER_IP"]) {
+                    withKubeConfig([credentialsId: 'kube-config', serverUrl: "https://$44.202.50.190"]) {
                         sh 'kubectl apply -f ./* --namespace my-namespace'
                     }
                 }
