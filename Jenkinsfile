@@ -37,7 +37,10 @@ pipeline {
                 script {
                     echo 'Deploying to Kubernetes'
                     withKubeConfig([credentialsId: 'kube-config', serverUrl: "https://$KUBE_MASTER_IP"]) {
-                        sh 'kubectl apply -f ./* --namespace my-namespace'
+                        sh 'kubectl apply -f deployment.yml --namespace my-namespace'
+                        sh 'kubectl apply -f hpa-web.yml --namespace my-namespace'
+                        sh 'kubectl apply -f service.yml --namespace my-namespace'
+                        sh 'kubectl apply -f namespace.yml' // namespace.yml ayrı bir namespace oluşturacaksa
                     }
                 }
             }
