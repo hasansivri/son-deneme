@@ -3,7 +3,7 @@ pipeline {
     environment {
         ECR_REGISTRY = "877540899436.dkr.ecr.us-east-1.amazonaws.com"
         APP_REPO_NAME = "hasan05/to-do-webapp"
-        KUBE_MASTER_IP = "3.85.160.219"
+        KUBE_MASTER_IP = "54.144.39.67"
         ANS_KEYPAIR = "secondkey" // Add your ANS_KEYPAIR value here
     }
     stages {
